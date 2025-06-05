@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopVibe - Your Ultimate Shopping Destination</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="shopping-bag">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <h2>Loading ShopVibe...</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope"></i> support@shopvibe.com</span>
+                    </div>
+                    <div class="top-bar-links">
+                        <a href="#" class="track-order">Track Order</a>
+                        <a href="#" class="help">Help</a>
+                        <div class="language-selector">
+                            <select>
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <h1><i class="fas fa-bolt"></i> ShopVibe</h1>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search for products, brands, and more..." id="search-input" autocomplete="off">
+                        <button class="search-btn" id="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <div class="user-account">
+                            <i class="fas fa-user"></i>
+                            <span>Account</span>
+                            <div class="account-dropdown">
+                                <a href="#" id="login-btn">Login</a>
+                                <a href="#" id="signup-btn">Sign Up</a>
+                                <a href="#">My Orders</a>
+                                <a href="#">Wishlist</a>
+                                <a href="#">Profile</a>
+                            </div>
+                        </div>
+                        
+                        <div class="wishlist">
+                            <i class="fas fa-heart"></i>
+                            <span class="wishlist-count">0</span>
+                        </div>
+                        
+                        <div class="cart" id="cart-toggle">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                            <span class="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-nav">
+                    <ul class="category-list">
+                        <li><a href="#" data-category="all">All Categories</a></li>
+                        <li><a href="#" data-category="electronics">Electronics</a></li>
+                        <li><a href="#" data-category="fashion">Fashion</a></li>
+                        <li><a href="#" data-category="home">Home & Garden</a></li>
+                        <li><a href="#" data-category="sports">Sports</a></li>
+                        <li><a href="#" data-category="beauty">Beauty</a></li>
+                        <li><a href="#" data-category="books">Books</a></li>
+                        <li><a href="#" data-category="automotive">Automotive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Summer Sale</h1>
+                            <h2 class="hero-subtitle">Up to 70% Off</h2>
+                            <p class="hero-description">Discover amazing deals on the latest fashion, electronics, and home essentials. Limited time offer!</p>
+                            <div class="hero-buttons">
+                                <button class="btn btn-primary hero-btn">Shop Now</button>
+                                <button class="btn btn-secondary hero-btn">View Collection</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-bg"></div>
+                </div>
+            </div>
+            <!-- Additional hero slides can be added here -->
+        </div>
+        
+        <div class="hero-navigation">
+            <button class="hero-nav-btn prev" id="hero-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="hero-nav-btn next" id="hero-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <div class="hero-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Free Shipping</h3>
+                        <p>Free shipping on orders over $50</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer service</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Secure Payment</h3>
+                        <p>100% secure transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop by Category</h2>
+                <p class="section-subtitle">Discover our wide range of product categories</p>
+            </div>
+            <div class="categories-grid">
+                <!-- Category cards can be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Deals Section -->
+    <section class="flash-deals" id="deals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">⚡ Flash Deals</h2>
+                <div class="deal-timer">
+                    <span>Ends in:</span>
+                    <div class="countdown" id="countdown">
+                        <div class="time-unit">
+                            <span class="time-number" id="hours">12</span>
+                            <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-number" id="minutes">34</span>
+                            <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-number" id="seconds">56</span>
+                            <span class="time-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="deals-slider" id="deals-slider">
+                <!-- Deal cards can be added here -->
+            </div>
+            <div class="slider-navigation">
+                <button class="slider-btn prev" id="deals-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" id="deals-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="new-arrivals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">New Arrivals</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="electronics">Electronics</button>
+                    <button class="filter-tab" data-filter="fashion">Fashion</button>
+                    <button class="filter-tab" data-filter="home">Home</button>
+                    <button class="filter-tab" data-filter="beauty">Beauty</button>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="load-more">Load More Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated with ShopVibe</h2>
+                    <p>Subscribe to our newsletter and get 20% off your next purchase plus exclusive deals and updates.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <p class="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3><i class="fas fa-bolt"></i> ShopVibe</h3>
+                        <p>Your ultimate shopping destination for quality products at unbeatable prices.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Home & Garden</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                        <li><a href="#">Product Care</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 ShopVibe. All rights reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <button class="btn btn-primary" id="close-cart-btn">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <div class="subtotal">
+                    <span>Subtotal: </span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="shipping">
+                    <span>Shipping: </span>
+                    <span>Free</span>
+                </div>
+                <div class="total">
+                    <span>Total: </span>
+                    <span id="cart-total-amount">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-secondary" id="view-cart">View Cart</button>
+                <button class="btn btn-primary" id="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to ShopVibe</h3>
+                <button class="close-modal" data-modal="login-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Login</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join ShopVibe</h3>
+                <button class="close-modal" data-modal="signup-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
