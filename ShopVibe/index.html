@@ -502,7 +502,64 @@
                 </form>
             </div>
         </div>
+    </div> <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Profile Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- User Profile Dashboard HTML -->
+  <div id="user-profile-dashboard" class="dashboard-container">
+
+    <div class="profile-header">
+      <img id="profile-pic" src="https://i.pravatar.cc/150?img=3" alt="Profile Picture" />
+      <h2 id="profile-username">John Doe</h2>
+      <p id="profile-email">johndoe@example.com</p>
     </div>
+
+    <button id="edit-profile-btn" class="btn-primary">Edit Profile</button>
+
+    <div id="edit-profile-form" class="edit-profile-form hidden">
+      <h3>Edit Profile</h3>
+      <form id="profileForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        
+        <button type="submit" class="btn-primary">Save Changes</button>
+        <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+      </form>
+    </div>
+
+    <div class="password-section">
+      <h3>Change Password</h3>
+      <form id="passwordForm">
+        <label for="current-password">Current Password:</label>
+        <input type="password" id="current-password" required />
+        
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" required />
+        
+        <label for="confirm-password">Confirm New Password:</label>
+        <input type="password" id="confirm-password" required />
+        
+        <button type="submit" class="btn-primary">Change Password</button>
+      </form>
+    </div>
+
+    <button id="logout-btn" class="btn-logout">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
     <script src="script.js"></script>
 </body>
