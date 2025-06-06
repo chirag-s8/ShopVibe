@@ -570,3 +570,29 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        document.body.appendChild(scrollToTopBtn);
+
+        const toggleScrollButton = () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', toggleScrollButton);
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll to top
+            });
+        });
+    });
+
