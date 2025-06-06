@@ -206,11 +206,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Products
     const products = [
-        { img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80', title: 'Wireless Headphones', price: 59.99, old: 89.99, cat: 'electronics' },
-        { img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80', title: 'Men\'s Jacket', price: 39.99, old: 59.99, cat: 'fashion' },
-        { img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', title: 'Modern Sofa', price: 299.99, old: 399.99, cat: 'home' },
-        { img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80', title: 'Yoga Mat', price: 19.99, old: 29.99, cat: 'sports' },
-        { img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', title: 'Lipstick Set', price: 24.99, old: 34.99, cat: 'beauty' }
+        { img: 'https://media.croma.com/image/upload/v1721992677/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/308673_jxaozj.png', title: 'Wireless Headphones', price: 59.99, old: 89.99, cat: 'electronics' },
+        { img: 'https://m.media-amazon.com/images/I/71zwwEe2nLL._AC_UY1100_.jpg', title: 'Men\'s Jacket', price: 39.99, old: 59.99, cat: 'fashion' },
+        { img: 'https://m.media-amazon.com/images/I/71dp23WRANL._AC_UF894,1000_QL80_.jpg', title: 'Modern Sofa', price: 299.99, old: 399.99, cat: 'home' },
+        { img: 'https://images-cdn.ubuy.co.in/648a83eaae99a17744598e5c-yoga-mat-thick-pilates-mat-for-women.jpg', title: 'Yoga Mat', price: 19.99, old: 29.99, cat: 'sports' },
+        { img: 'https://5.imimg.com/data5/WQ/JK/PC/IOS-93978710/product-jpeg-500x500.png', title: 'Lipstick Set', price: 24.99, old: 34.99, cat: 'beauty' }
     ];
     const grid = document.getElementById('products-grid');
     function renderProducts(filter = 'all') {
