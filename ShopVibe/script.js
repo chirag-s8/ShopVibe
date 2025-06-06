@@ -344,7 +344,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     renderProducts();
     document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.onclick = function () {
+        tab.onclick = function() {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             if (this.dataset.filter === 'electronics') {
