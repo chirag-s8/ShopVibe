@@ -184,6 +184,97 @@ document.body.onclick = function(e) {
     }
 };
 
+// NEW FEATURE: Product Quick View Modal
+const quickViewModal = document.getElementById('quick-view-modal');
+const quickViewOverlay = document.getElementById('quick-view-overlay');
+
+function openQuickView(productData) {
+    // Populate modal with product data
+    document.getElementById('qv-image').src = productData.img;
+    document.getElementById('qv-title').textContent = productData.title;
+    document.getElementById('qv-price').textContent = `$${productData.price.toFixed(2)}`;
+    document.getElementById('qv-old-price').textContent = `$${productData.old.toFixed(2)}`;
+    document.getElementById('qv-description').textContent = productData.description;
+    document.getElementById('qv-rating').innerHTML = '★'.repeat(productData.rating) + '☆'.repeat(5 - productData.rating);
+    document.getElementById('qv-stock').textContent = productData.stock > 0 ? `${productData.stock} in stock` : 'Out of stock';
+    
+    // Update quantity selector max value
+    const qtySelect = document.getElementById('qv-quantity');
+    qtySelect.innerHTML = '';
+    for (let i = 1; i <= Math.min(productData.stock, 10); i++) {
+        qtySelect.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+    
+    // Show modal
+    quickViewModal.classList.add('active');
+    quickViewOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeQuickView() {
+    quickViewModal.classList.remove('active');
+    quickViewOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close quick view modal
+document.getElementById('close-quick-view').onclick = closeQuickView;
+quickViewOverlay.onclick = closeQuickView;
+
+// Handle quick view add to cart
+document.getElementById('qv-add-to-cart').onclick = function() {
+    const quantity = document.getElementById('qv-quantity').value;
+    const productTitle = document.getElementById('qv-title').textContent;
+    alert(`Added ${quantity} x ${productTitle} to cart!`);
+    closeQuickView();
+};
+
+// Product comparison feature
+let comparisonList = [];
+
+function toggleComparison(productData) {
+    const index = comparisonList.findIndex(p => p.title === productData.title);
+    if (index > -1) {
+        comparisonList.splice(index, 1);
+    } else {
+        if (comparisonList.length < 3) {
+            comparisonList.push(productData);
+        } else {
+            alert('You can only compare up to 3 products at once.');
+            return;
+        }
+    }
+    updateComparisonBar();
+}
+
+function updateComparisonBar() {
+    const compBar = document.getElementById('comparison-bar');
+    if (comparisonList.length === 0) {
+        compBar.style.display = 'none';
+        return;
+    }
+    
+    compBar.style.display = 'block';
+    document.getElementById('comparison-count').textContent = comparisonList.length;
+    document.getElementById('comparison-items').innerHTML = comparisonList.map(p => 
+        `<span>${p.title} <button onclick="removeFromComparison('${p.title}')">×</button></span>`
+    ).join('');
+}
+
+function removeFromComparison(title) {
+    comparisonList = comparisonList.filter(p => p.title !== title);
+    updateComparisonBar();
+}
+
+function showComparison() {
+    if (comparisonList.length < 2) {
+        alert('Please select at least 2 products to compare.');
+        return;
+    }
+    // Here you would show a comparison table/modal
+    alert(`Comparing: ${comparisonList.map(p => p.title).join(', ')}`);
+}
+
 // Demo: Add some categories and products dynamically
 window.addEventListener('DOMContentLoaded', () => {
     // Categories
@@ -204,33 +295,86 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>`
     ).join('');
 
-    // Products
+    // Enhanced products with more details for quick view
     const products = [
-        { img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80', title: 'Wireless Headphones', price: 59.99, old: 89.99, cat: 'electronics' },
-        { img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80', title: 'Men\'s Jacket', price: 39.99, old: 59.99, cat: 'fashion' },
-        { img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', title: 'Modern Sofa', price: 299.99, old: 399.99, cat: 'home' },
-        { img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80', title: 'Yoga Mat', price: 19.99, old: 29.99, cat: 'sports' },
-        { img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', title: 'Lipstick Set', price: 24.99, old: 34.99, cat: 'beauty' }
+        { 
+            img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80', 
+            title: 'Wireless Headphones', 
+            price: 59.99, 
+            old: 89.99, 
+            cat: 'electronics',
+            description: 'Premium wireless headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.',
+            rating: 4,
+            stock: 15
+        },
+        { 
+            img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80', 
+            title: 'Men\'s Jacket', 
+            price: 39.99, 
+            old: 59.99, 
+            cat: 'fashion',
+            description: 'Stylish and comfortable men\'s jacket made from high-quality materials. Available in multiple sizes and colors.',
+            rating: 5,
+            stock: 8
+        },
+        { 
+            img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', 
+            title: 'Modern Sofa', 
+            price: 299.99, 
+            old: 399.99, 
+            cat: 'home',
+            description: 'Comfortable 3-seater modern sofa with premium fabric upholstery. Perfect for any living room setup.',
+            rating: 4,
+            stock: 3
+        },
+        { 
+            img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80', 
+            title: 'Yoga Mat', 
+            price: 19.99, 
+            old: 29.99, 
+            cat: 'sports',
+            description: 'Non-slip yoga mat with excellent grip and cushioning. Eco-friendly and durable for all your workout needs.',
+            rating: 4,
+            stock: 25
+        },
+        { 
+            img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', 
+            title: 'Lipstick Set', 
+            price: 24.99, 
+            old: 34.99, 
+            cat: 'beauty',
+            description: 'Premium lipstick collection with 6 vibrant shades. Long-lasting formula that keeps your lips moisturized.',
+            rating: 5,
+            stock: 12
+        }
     ];
+    
     const grid = document.getElementById('products-grid');
     function renderProducts(filter = 'all') {
         grid.innerHTML = products.filter(p => filter === 'all' || p.cat === filter)
-            .map(p => `
+            .map((p, index) => `
                 <div class="product-card">
                     <img src="${p.img}" alt="${p.title}">
                     <div class="product-title">${p.title}</div>
+                    <div class="product-rating">${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}</div>
                     <div>
                         <span class="product-price">$${p.price.toFixed(2)}</span>
                         <span class="product-old-price">$${p.old.toFixed(2)}</span>
                     </div>
                     <div class="product-actions">
-                        <button>Add to Cart</button>
+                        <button onclick="openQuickView(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-eye"></i> Quick View
+                        </button>
                         <button><i class="fas fa-heart"></i></button>
+                        <button onclick="toggleComparison(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-balance-scale"></i>
+                        </button>
                     </div>
                 </div>
             `).join('');
     }
     renderProducts();
+    
     document.querySelectorAll('.filter-tab').forEach(tab => {
         tab.onclick = function() {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
