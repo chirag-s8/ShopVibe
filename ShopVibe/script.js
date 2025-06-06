@@ -1,13 +1,16 @@
-// script.js
-
-// Loading screen
+// ===========================
+// LOADING SCREEN
+// ===========================
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.getElementById('loading-screen').style.display = 'none';
     }, 1200);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+// ===========================
+// MODAL AND FORM LOGIC
+// ===========================
+document.addEventListener('DOMContentLoaded', function () {
     const loginBtn = document.getElementById('login-btn');
     const signupBtn = document.getElementById('signup-btn');
     const closeModalButtons = document.querySelectorAll('.close-modal');
@@ -15,101 +18,122 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginModal = document.getElementById('login-modal');
     const signupModal = document.getElementById('signup-modal');
 
-    // Open login modal
-    loginBtn.addEventListener('click', function() {
+    loginBtn.addEventListener('click', () => {
         loginModal.classList.add('active');
         modalOverlay.classList.add('active');
     });
 
-    // Open signup modal
-    signupBtn.addEventListener('click', function() {
+    signupBtn.addEventListener('click', () => {
         signupModal.classList.add('active');
         modalOverlay.classList.add('active');
     });
 
-    // Close modals
     closeModalButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const modal = document.getElementById(button.dataset.modal);
             modal.classList.remove('active');
             modalOverlay.classList.remove('active');
         });
     });
 
-    // Close modal when clicking outside of it
-    modalOverlay.addEventListener('click', function() {
+    modalOverlay.addEventListener('click', () => {
         loginModal.classList.remove('active');
         signupModal.classList.remove('active');
         modalOverlay.classList.remove('active');
     });
 
-    // Handle form submissions (example)
+    // ============ FORM VALIDATION & STORAGE ============
+
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        // Handle login logic here
-        alert('Login form submitted');
-    });
+    signupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('signup-username').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+        const confirmPassword = document.getElementById('signup-confirm').value;
 
-    signupForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        // Handle signup logic here
-        alert('Signup form submitted');
-    });
-});
+        if (!username || !email || !password || !confirmPassword) {
+            alert("Please fill all the fields.");
+            return;
+        }
 
-// Modal logic
-const modalOverlay = document.getElementById('modal-overlay');
-const loginModal = document.getElementById('login-modal');
-const signupModal = document.getElementById('signup-modal');
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Invalid email format.");
+            return;
+        }
 
-document.getElementById('login-btn').onclick = function() {
-    modalOverlay.classList.add('active');
-    loginModal.classList.add('active');
-};
-document.getElementById('signup-btn').onclick = function() {
-    modalOverlay.classList.add('active');
-    signupModal.classList.add('active');
-};
-document.querySelectorAll('.close-modal').forEach(btn => {
-    btn.onclick = function() {
-        modalOverlay.classList.remove('active');
-        loginModal.classList.remove('active');
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        // Save to localStorage
+        const user = { username, email, password };
+        localStorage.setItem("demoUser", JSON.stringify(user));
+
+        alert("Signup successful! You can now log in.");
+        signupForm.reset();
         signupModal.classList.remove('active');
+        modalOverlay.classList.remove('active');
+    });
+
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        const storedUser = JSON.parse(localStorage.getItem("demoUser"));
+
+        if (!email || !password) {
+            alert("Please fill in both fields.");
+            return;
+        }
+
+        if (!storedUser) {
+            alert("No user found. Please sign up first.");
+            return;
+        }
+
+        if (storedUser.email === email && storedUser.password === password) {
+            alert(`Welcome back, ${storedUser.username}!`);
+            loginForm.reset();
+            loginModal.classList.remove('active');
+            modalOverlay.classList.remove('active');
+        } else {
+            alert("Invalid email or password.");
+        }
+    });
+
+    document.getElementById('switch-to-signup').onclick = function (e) {
+        e.preventDefault();
+        loginModal.classList.remove('active');
+        signupModal.classList.add('active');
     };
 });
-modalOverlay.onclick = function() {
-    modalOverlay.classList.remove('active');
-    loginModal.classList.remove('active');
-    signupModal.classList.remove('active');
-};
-document.getElementById('switch-to-signup').onclick = function(e) {
-    e.preventDefault();
-    loginModal.classList.remove('active');
-    signupModal.classList.add('active');
-};
 
-// Cart sidebar logic
+// ===========================
+// CART SIDEBAR
+// ===========================
 const cartSidebar = document.getElementById('cart-sidebar');
-document.getElementById('cart-toggle').onclick = function() {
+document.getElementById('cart-toggle').onclick = () => {
     cartSidebar.classList.add('active');
     modalOverlay.classList.add('active');
 };
-document.getElementById('close-cart').onclick = function() {
-    cartSidebar.classList.remove('active');
-    modalOverlay.classList.remove('active');
-};
-document.getElementById('close-cart-btn').onclick = function() {
-    cartSidebar.classList.remove('active');
-    modalOverlay.classList.remove('active');
-};
+document.getElementById('close-cart').onclick =
+    document.getElementById('close-cart-btn').onclick = () => {
+        cartSidebar.classList.remove('active');
+        modalOverlay.classList.remove('active');
+    };
 
-// Hero slider (basic demo)
+// ===========================
+// HERO SLIDER
+// ===========================
 let currentHero = 0;
 const heroSlides = document.querySelectorAll('.hero-slide');
 const indicators = document.querySelectorAll('.indicator');
+
 function showHeroSlide(idx) {
     heroSlides.forEach((slide, i) => {
         slide.classList.toggle('active', i === idx);
@@ -117,17 +141,19 @@ function showHeroSlide(idx) {
     });
     currentHero = idx;
 }
-document.getElementById('hero-prev').onclick = function() {
+document.getElementById('hero-prev').onclick = () => {
     showHeroSlide((currentHero - 1 + heroSlides.length) % heroSlides.length);
 };
-document.getElementById('hero-next').onclick = function() {
+document.getElementById('hero-next').onclick = () => {
     showHeroSlide((currentHero + 1) % heroSlides.length);
 };
 indicators.forEach((ind, i) => {
     ind.onclick = () => showHeroSlide(i);
 });
 
-// Flash deals countdown
+// ===========================
+// FLASH DEALS COUNTDOWN
+// ===========================
 function startCountdown(hours, minutes, seconds) {
     function update() {
         if (seconds === 0) {
@@ -136,33 +162,41 @@ function startCountdown(hours, minutes, seconds) {
                 hours--; minutes = 59; seconds = 59;
             } else { minutes--; seconds = 59; }
         } else { seconds--; }
+
         document.getElementById('hours').textContent = String(hours).padStart(2, '0');
         document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
         setTimeout(update, 1000);
     }
     update();
 }
 startCountdown(12, 34, 56);
 
-// Newsletter form
-document.getElementById('newsletter-form').onsubmit = function(e) {
+// ===========================
+// NEWSLETTER FORM
+// ===========================
+document.getElementById('newsletter-form').onsubmit = function (e) {
     e.preventDefault();
     alert('Thank you for subscribing!');
     this.reset();
 };
 
-// Search suggestions (demo)
+// ===========================
+// SEARCH SUGGESTIONS
+// ===========================
 const searchInput = document.getElementById('search-input');
 const searchSuggestions = document.getElementById('search-suggestions');
 const suggestions = ['iPhone 15', 'Nike Shoes', 'Smart TV', 'Headphones', 'Coffee Maker', 'Wrist Watch', 'Bluetooth Speaker'];
-searchInput.oninput = function() {
+
+searchInput.oninput = function () {
     const val = this.value.trim().toLowerCase();
     if (!val) {
         searchSuggestions.classList.remove('active');
         searchSuggestions.innerHTML = '';
         return;
     }
+
     const filtered = suggestions.filter(s => s.toLowerCase().includes(val));
     if (filtered.length) {
         searchSuggestions.innerHTML = filtered.map(s => `<li>${s}</li>`).join('');
@@ -178,11 +212,13 @@ searchInput.oninput = function() {
         searchSuggestions.innerHTML = '';
     }
 };
-document.body.onclick = function(e) {
+
+document.body.onclick = function (e) {
     if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
         searchSuggestions.classList.remove('active');
     }
 };
+
 
 // Star rating logic
 const starRating = document.getElementById('starRating');
@@ -255,8 +291,12 @@ function addReview(name, rating, text) {
 }
 
 // Demo: Add some categories and products dynamically
+
+// ===========================
+// DYNAMIC CATEGORIES & PRODUCTS
+// ===========================
+
 window.addEventListener('DOMContentLoaded', () => {
-    // Categories
     const categories = [
         { icon: 'fa-laptop', name: 'Electronics', desc: 'Latest gadgets & devices' },
         { icon: 'fa-tshirt', name: 'Fashion', desc: 'Trendy clothes & accessories' },
@@ -274,7 +314,6 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>`
     ).join('');
 
-    // Products
     const products = [
         { img: 'https://media.croma.com/image/upload/v1721992677/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/308673_jxaozj.png', title: 'Wireless Headphones', price: 59.99, old: 89.99, cat: 'electronics' },
         { img: 'https://m.media-amazon.com/images/I/71zwwEe2nLL._AC_UY1100_.jpg', title: 'Men\'s Jacket', price: 39.99, old: 59.99, cat: 'fashion' },
@@ -282,7 +321,9 @@ window.addEventListener('DOMContentLoaded', () => {
         { img: 'https://images-cdn.ubuy.co.in/648a83eaae99a17744598e5c-yoga-mat-thick-pilates-mat-for-women.jpg', title: 'Yoga Mat', price: 19.99, old: 29.99, cat: 'sports' },
         { img: 'https://5.imimg.com/data5/WQ/JK/PC/IOS-93978710/product-jpeg-500x500.png', title: 'Lipstick Set', price: 24.99, old: 34.99, cat: 'beauty' }
     ];
+
     const grid = document.getElementById('products-grid');
+
     function renderProducts(filter = 'all') {
         grid.innerHTML = products.filter(p => filter === 'all' || p.cat === filter)
             .map(p => `
@@ -300,9 +341,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 </div>
             `).join('');
     }
+
     renderProducts();
     document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.onclick = function() {
+        tab.onclick = function () {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             if (this.dataset.filter === 'electronics') {
@@ -313,3 +355,4 @@ window.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+
