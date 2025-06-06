@@ -99,7 +99,3 @@ We welcome contributions!
 2. Create a new branch for your feature or bugfix.
 3. Commit your changes.
 4. Open a pull request describing your changes.
-
-## Contact
-
-For questions or support, open an issue or contact [chiragshekar07@gmail.com] [7019701791]
