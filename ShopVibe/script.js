@@ -249,6 +249,224 @@ function highlightStars(val) {
     star.classList.toggle('hovered', starVal <= val && val !== selectedRating);
   });
 }
+<!-- User Profile Dashboard -->
+<div id="user-profile-dashboard" class="dashboard-container">
+
+  <div class="profile-header">
+    <img id="profile-pic" src="https://i.pravatar.cc/150?img=3" alt="Profile Picture" />
+    <h2 id="profile-username">John Doe</h2>
+    <p id="profile-email">johndoe@example.com</p>
+  </div>
+
+  <button id="edit-profile-btn" class="btn-primary">Edit Profile</button>
+
+  <div id="edit-profile-form" class="edit-profile-form hidden">
+    <h3>Edit Profile</h3>
+    <form id="profileForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required />
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      
+      <button type="submit" class="btn-primary">Save Changes</button>
+      <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+    </form>
+  </div>
+
+  <div class="password-section">
+    <h3>Change Password</h3>
+    <form id="passwordForm">
+      <label for="current-password">Current Password:</label>
+      <input type="password" id="current-password" required />
+      
+      <label for="new-password">New Password:</label>
+      <input type="password" id="new-password" required />
+      
+      <label for="confirm-password">Confirm New Password:</label>
+      <input type="password" id="confirm-password" required />
+      
+      <button type="submit" class="btn-primary">Change Password</button>
+    </form>
+  </div>
+
+  <button id="logout-btn" class="btn-logout">Logout</button>
+</div>
+
+<style>
+  .dashboard-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fefefe;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  #profile-username {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  #profile-email {
+    margin: 4px 0 0;
+    color: #555;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: #2c7aed;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .btn-secondary {
+    background-color: #999;
+    margin-left: 10px;
+  }
+
+  .btn-logout {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px 0;
+    background-color: #e55353;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .edit-profile-form {
+    margin-top: 20px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .password-section {
+    margin-top: 30px;
+  }
+</style>
+
+<script>
+  const editBtn = document.getElementById('edit-profile-btn');
+  const editForm = document.getElementById('edit-profile-form');
+  const cancelEditBtn = document.getElementById('cancel-edit');
+  const profileForm = document.getElementById('profileForm');
+
+  const profileUsername = document.getElementById('profile-username');
+  const profileEmail = document.getElementById('profile-email');
+
+  editBtn.addEventListener('click', () => {
+    editForm.classList.remove('hidden');
+    editBtn.style.display = 'none';
+
+    // Prefill form with current data
+    document.getElementById('username').value = profileUsername.textContent;
+    document.getElementById('email').value = profileEmail.textContent;
+  });
+
+  cancelEditBtn.addEventListener('click', () => {
+    editForm.classList.add('hidden');
+    editBtn.style.display = 'inline-block';
+  });
+
+  profileForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const newUsername = document.getElementById('username').value.trim();
+    const newEmail = document.getElementById('email').value.trim();
+
+    if (!newUsername || !newEmail) {
+      alert('Please fill in both username and email.');
+      return;
+    }
+
+    // Basic email validation
+    if (!/^\S+@\S+\.\S+$/.test(newEmail)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    profileUsername.textContent = newUsername;
+    profileEmail.textContent = newEmail;
+
+    alert('Profile updated successfully!');
+
+    editForm.classList.add('hidden');
+    editBtn.style.display = 'inline-block';
+  });
+
+  // Password change logic
+  const passwordForm = document.getElementById('passwordForm');
+  passwordForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const currentPass = document.getElementById('current-password').value;
+    const newPass = document.getElementById('new-password').value;
+    const confirmPass = document.getElementById('confirm-password').value;
+
+    if (!currentPass || !newPass || !confirmPass) {
+      alert('Please fill all password fields.');
+      return;
+    }
+
+    if (newPass !== confirmPass) {
+      alert('New passwords do not match.');
+      return;
+    }
+
+    // NOTE: For demo, just alert success (no real password management here)
+    alert('Password changed successfully!');
+
+    passwordForm.reset();
+  });
+
+  // Logout button
+  const logoutBtn = document.getElementById('logout-btn');
+  logoutBtn.addEventListener('click', () => {
+    alert('You have been logged out.');
+    // You can add your logout logic here (e.g., clearing tokens, redirecting)
+  });
+</script>
 
 // Handle review form submission
 const reviewForm = document.getElementById('reviewForm');
@@ -392,4 +610,30 @@ window.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        document.body.appendChild(scrollToTopBtn);
+
+        const toggleScrollButton = () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', toggleScrollButton);
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll to top
+            });
+        });
+    });
 

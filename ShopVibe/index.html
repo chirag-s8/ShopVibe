@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader">
             <div class="shopping-bag">
@@ -22,7 +22,6 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header class="header">
         <div class="top-bar">
             <div class="container">
@@ -103,7 +102,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-slider">
             <div class="hero-slide active">
@@ -124,8 +122,7 @@
                     <div class="hero-bg"></div>
                 </div>
             </div>
-            <!-- Additional hero slides can be added here -->
-        </div>
+            </div>
         
         <div class="hero-navigation">
             <button class="hero-nav-btn prev" id="hero-prev">
@@ -143,7 +140,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
@@ -187,7 +183,6 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
     <section class="categories" id="categories">
         <div class="container">
             <div class="section-header">
@@ -195,12 +190,10 @@
                 <p class="section-subtitle">Discover our wide range of product categories</p>
             </div>
             <div class="categories-grid">
-                <!-- Category cards can be added here -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Flash Deals Section -->
     <section class="flash-deals" id="deals">
         <div class="container">
             <div class="section-header">
@@ -224,8 +217,7 @@
                 </div>
             </div>
             <div class="deals-slider" id="deals-slider">
-                <!-- Deal cards can be added here -->
-            </div>
+                </div>
             <div class="slider-navigation">
                 <button class="slider-btn prev" id="deals-prev">
                     <i class="fas fa-chevron-left"></i>
@@ -237,7 +229,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section class="products" id="new-arrivals">
         <div class="container">
             <div class="section-header">
@@ -251,13 +242,55 @@
                 </div>
             </div>
             <div class="products-grid" id="products-grid">
-                <!-- Products will be dynamically loaded here -->
-            </div>
+                </div>
             <div class="load-more-container">
                 <button class="btn btn-secondary" id="load-more">Load More Products</button>
             </div>
         </div>
     </section>
+
+
+    <section class="blog-posts" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">From Our Blog</h2>
+                <p class="section-subtitle">Stay up-to-date with the latest trends and tips</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-post-item">
+                    <img src="https://via.placeholder.com/400x250?text=Blog+Post+Image+1" alt="Blog Post Title" class="blog-post-image">
+                    <div class="blog-post-content">
+                        <h4 class="blog-post-title">The Ultimate Guide to Summer Fashion 2025</h4>
+                        <p class="blog-post-meta">By ShopVibe Team | June 1, 2025</p>
+                        <p class="blog-post-excerpt">Discover the must-have trends and essential pieces for your summer wardrobe this year.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-post-item">
+                    <img src="https://via.placeholder.com/400x250?text=Blog+Post+Image+2" alt="Blog Post Title" class="blog-post-image">
+                    <div class="blog-post-content">
+                        <h4 class="blog-post-title">Top 5 Smart Home Gadgets You Need Right Now</h4>
+                        <p class="blog-post-meta">By Gadget Guru | May 28, 2025</p>
+                        <p class="blog-post-excerpt">Transform your living space with these innovative smart home devices that make life easier.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-post-item">
+                    <img src="https://via.placeholder.com/400x250?text=Blog+Post+Image+3" alt="Blog Post Title" class="blog-post-image">
+                    <div class="blog-post-content">
+                        <h4 class="blog-post-title">Budget-Friendly Beauty: Skincare on a Dime</h4>
+                        <p class="blog-post-meta">By Beauty Expert | May 25, 2025</p>
+                        <p class="blog-post-excerpt">Achieve glowing skin without breaking the bank. Our top tips for affordable skincare.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-secondary">View All Blog Posts</button>
+            </div>
+        </div>
+    </section>
+
 
     <div class="review-section">
   <h2>Customer Reviews</h2>
@@ -315,6 +348,7 @@
 </div>
 
     <!-- Newsletter Section -->
+
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
@@ -335,7 +369,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -397,7 +430,6 @@
         </div>
     </footer>
 
-    <!-- Shopping Cart Sidebar -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Shopping Cart</h3>
@@ -434,10 +466,8 @@
         </div>
     </div>
 
-    <!-- Modal Overlay -->
     <div class="modal-overlay" id="modal-overlay"></div>
 
-    <!-- Login Modal -->
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -472,7 +502,6 @@
         </div>
     </div>
 
-    <!-- Signup Modal -->
     <div class="modal" id="signup-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -503,7 +532,64 @@
                 </form>
             </div>
         </div>
+    </div> <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Profile Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- User Profile Dashboard HTML -->
+  <div id="user-profile-dashboard" class="dashboard-container">
+
+    <div class="profile-header">
+      <img id="profile-pic" src="https://i.pravatar.cc/150?img=3" alt="Profile Picture" />
+      <h2 id="profile-username">John Doe</h2>
+      <p id="profile-email">johndoe@example.com</p>
     </div>
+
+    <button id="edit-profile-btn" class="btn-primary">Edit Profile</button>
+
+    <div id="edit-profile-form" class="edit-profile-form hidden">
+      <h3>Edit Profile</h3>
+      <form id="profileForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        
+        <button type="submit" class="btn-primary">Save Changes</button>
+        <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+      </form>
+    </div>
+
+    <div class="password-section">
+      <h3>Change Password</h3>
+      <form id="passwordForm">
+        <label for="current-password">Current Password:</label>
+        <input type="password" id="current-password" required />
+        
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" required />
+        
+        <label for="confirm-password">Confirm New Password:</label>
+        <input type="password" id="confirm-password" required />
+        
+        <button type="submit" class="btn-primary">Change Password</button>
+      </form>
+    </div>
+
+    <button id="logout-btn" class="btn-logout">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
     <script src="script.js"></script>
 </body>
