@@ -91,7 +91,7 @@
                     <ul class="category-list">
                         <li><a href="#" data-category="all">All Categories</a></li>
                         <li><a href="electronics.html" data-category="electronics">Electronics</a></li>
-                        <li><a href="#" data-category="fashion">Fashion</a></li>
+                        <li><a href="fashion.html" data-category="fashion">Fashion</a></li>
                         <li><a href="#" data-category="home">Home & Garden</a></li>
                         <li><a href="#" data-category="sports">Sports</a></li>
                         <li><a href="#" data-category="beauty">Beauty</a></li>
@@ -282,6 +282,35 @@
 
   <div class="reviews-list" id="reviewsList">
     <!-- Reviews will appear here -->
+  </div>
+</div>
+
+<div class="report-problem-section">
+  <h2>Report a Problem</h2>
+  <form id="problemForm" class="problem-form">
+    <label for="problemName">Your Name:</label>
+    <input type="text" id="problemName" required>
+
+    <label for="problemEmail">Your Email (optional):</label>
+    <input type="email" id="problemEmail">
+
+    <label for="problemType">Problem Type:</label>
+    <select id="problemType" required>
+      <option value="">Select...</option>
+      <option value="Product Issue">Product Issue</option>
+      <option value="Payment Issue">Payment Issue</option>
+      <option value="Website Bug">Website Bug</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="problemDescription">Describe the problem:</label>
+    <textarea id="problemDescription" rows="3" required></textarea>
+
+    <button type="submit">Submit Report</button>
+  </form>
+
+  <div class="problems-list" id="problemsList">
+    <!-- Problem reports will appear here -->
   </div>
 </div>
 
