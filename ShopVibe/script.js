@@ -305,7 +305,11 @@ window.addEventListener('DOMContentLoaded', () => {
         tab.onclick = function() {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-            renderProducts(this.dataset.filter);
+            if (this.dataset.filter === 'electronics') {
+                window.location.href = 'electronics.html';
+            } else {
+                renderProducts(this.dataset.filter);
+            }
         };
     });
 });
