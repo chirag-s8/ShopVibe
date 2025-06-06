@@ -290,6 +290,43 @@ function addReview(name, rating, text) {
   reviewsList.prepend(reviewDiv);
 }
 
+const problemForm = document.getElementById('problemForm');
+const problemsList = document.getElementById('problemsList');
+
+problemForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('problemName').value.trim();
+  const email = document.getElementById('problemEmail').value.trim();
+  const type = document.getElementById('problemType').value;
+  const desc = document.getElementById('problemDescription').value.trim();
+
+  if (!name || !type || !desc) {
+    alert('Please fill in your name, problem type, and description.');
+    return;
+  }
+
+  addProblemReport(name, email, type, desc);
+
+  // Reset form
+  problemForm.reset();
+});
+
+function addProblemReport(name, email, type, desc) {
+  const reportDiv = document.createElement('div');
+  reportDiv.className = 'problem-report';
+
+  const emailStr = email ? ` | Email: ${email}` : '';
+
+  reportDiv.innerHTML = `
+    <div class="problem-header">${type}</div>
+    <div class="problem-meta">Reported by: ${name}${emailStr}</div>
+    <div class="problem-desc">${desc}</div>
+  `;
+
+  problemsList.prepend(reportDiv);
+}
+
 // Demo: Add some categories and products dynamically
 
 // ===========================

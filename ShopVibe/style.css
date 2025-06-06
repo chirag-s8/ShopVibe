@@ -728,6 +728,78 @@ button[type="submit"]:hover {
   color: #444;
 }
 
+.report-problem-section {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #eee;
+  background: #f9f9fa;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.report-problem-section h2 {
+  text-align: center;
+  color: #c0392b;
+}
+
+.problem-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.problem-form label {
+  font-weight: bold;
+}
+
+.problem-form input,
+.problem-form select,
+.problem-form textarea {
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background: #96281B;
+}
+
+.problems-list {
+  margin-top: 25px;
+}
+
+.problem-report {
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.problem-report .problem-header {
+  font-weight: bold;
+  color: #c0392b;
+}
+
+.problem-report .problem-meta {
+  font-size: 0.95em;
+  color: #444;
+}
+
+.problem-report .problem-desc {
+  margin-top: 5px;
+  color: #444;
+}
+
 .footer {
     background: #222;
     color: #fff;
