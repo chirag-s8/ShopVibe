@@ -209,6 +209,9 @@ function openQuickView(productData) {
     quickViewModal.classList.add('active');
     quickViewOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Track recently viewed product
+    addProductToRecentlyViewed(productData);
 }
 
 function closeQuickView() {
@@ -297,8 +300,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Enhanced products with more details for quick view
     const products = [
-
         { 
+            id: 'prod-001', // Added unique ID
             img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80', 
             title: 'Wireless Headphones', 
             price: 59.99, 
@@ -309,6 +312,7 @@ window.addEventListener('DOMContentLoaded', () => {
             stock: 15
         },
         { 
+            id: 'prod-002', // Added unique ID
             img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80', 
             title: 'Men\'s Jacket', 
             price: 39.99, 
@@ -319,6 +323,7 @@ window.addEventListener('DOMContentLoaded', () => {
             stock: 8
         },
         { 
+            id: 'prod-003', // Added unique ID
             img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', 
             title: 'Modern Sofa', 
             price: 299.99, 
@@ -329,6 +334,7 @@ window.addEventListener('DOMContentLoaded', () => {
             stock: 3
         },
         { 
+            id: 'prod-004', // Added unique ID
             img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80', 
             title: 'Yoga Mat', 
             price: 19.99, 
@@ -339,6 +345,7 @@ window.addEventListener('DOMContentLoaded', () => {
             stock: 25
         },
         { 
+            id: 'prod-005', // Added unique ID
             img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', 
             title: 'Lipstick Set', 
             price: 24.99, 
@@ -347,14 +354,63 @@ window.addEventListener('DOMContentLoaded', () => {
             description: 'Premium lipstick collection with 6 vibrant shades. Long-lasting formula that keeps your lips moisturized.',
             rating: 5,
             stock: 12
+        },
+        // Corrected and added unique IDs for the next set of products
+        { 
+            id: 'prod-006', 
+            img: 'https://media.croma.com/image/upload/v1721992677/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/308673_jxaozj.png', 
+            title: 'Gaming Headset', 
+            price: 59.99, 
+            old: 89.99, 
+            cat: 'electronics',
+            description: 'High-fidelity gaming headset with clear microphone. Immerse yourself in your favorite games.',
+            rating: 4,
+            stock: 10
+        },
+        { 
+            id: 'prod-007', 
+            img: 'https://m.media-amazon.com/images/I/71zwwEe2nLL._AC_UY1100_.jpg', 
+            title: 'Denim Jacket', 
+            price: 39.99, 
+            old: 59.99, 
+            cat: 'fashion',
+            description: 'Classic denim jacket, a timeless addition to any wardrobe. Durable and stylish for all seasons.',
+            rating: 5,
+            stock: 15
+        },
+        { 
+            id: 'prod-008', 
+            img: 'https://m.media-amazon.com/images/I/71dp23WRANL._AC_UF894,1000_QL80_.jpg', 
+            title: 'Dining Chairs', 
+            price: 129.99, 
+            old: 159.99, 
+            cat: 'home',
+            description: 'Set of two ergonomically designed dining chairs for comfort and style. Perfect for modern interiors.',
+            rating: 4,
+            stock: 6
+        },
+        { 
+            id: 'prod-009', 
+            img: 'https://images-cdn.ubuy.co.in/648a83eaae99a17744598e5c-yoga-mat-thick-pilates-mat-for-women.jpg', 
+            title: 'Resistance Bands', 
+            price: 19.99, 
+            old: 29.99, 
+            cat: 'sports',
+            description: 'Set of resistance bands for full-body workouts. Ideal for home fitness and physical therapy.',
+            rating: 4,
+            stock: 30
+        },
+        { 
+            id: 'prod-010', 
+            img: 'https://5.imimg.com/data5/WQ/JK/PC/IOS-93978710/product-jpeg-500x500.png', 
+            title: 'Moisturizing Cream', 
+            price: 24.99, 
+            old: 34.99, 
+            cat: 'beauty',
+            description: 'Rich moisturizing cream with natural extracts for healthy, glowing skin. Suitable for daily use.',
+            rating: 5,
+            stock: 20
         }
-
-        { img: 'https://media.croma.com/image/upload/v1721992677/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/308673_jxaozj.png', title: 'Wireless Headphones', price: 59.99, old: 89.99, cat: 'electronics' },
-        { img: 'https://m.media-amazon.com/images/I/71zwwEe2nLL._AC_UY1100_.jpg', title: 'Men\'s Jacket', price: 39.99, old: 59.99, cat: 'fashion' },
-        { img: 'https://m.media-amazon.com/images/I/71dp23WRANL._AC_UF894,1000_QL80_.jpg', title: 'Modern Sofa', price: 299.99, old: 399.99, cat: 'home' },
-        { img: 'https://images-cdn.ubuy.co.in/648a83eaae99a17744598e5c-yoga-mat-thick-pilates-mat-for-women.jpg', title: 'Yoga Mat', price: 19.99, old: 29.99, cat: 'sports' },
-        { img: 'https://5.imimg.com/data5/WQ/JK/PC/IOS-93978710/product-jpeg-500x500.png', title: 'Lipstick Set', price: 24.99, old: 34.99, cat: 'beauty' }
-
     ];
     
     const grid = document.getElementById('products-grid');
@@ -390,29 +446,97 @@ window.addEventListener('DOMContentLoaded', () => {
             renderProducts(this.dataset.filter);
         };
     });
+
+    // Recently Viewed Products Feature
+    const RECENT_VIEW_KEY = 'recentlyViewedProducts';
+    const MAX_RECENT_VIEWS = 5; // Limit to 5 recently viewed products
+
+    function getRecentlyViewedProducts() {
+        const data = localStorage.getItem(RECENT_VIEW_KEY);
+        return data ? JSON.parse(data) : [];
+    }
+
+    function addProductToRecentlyViewed(productData) {
+        let viewed = getRecentlyViewedProducts();
+
+        // Remove if already exists to move it to the front (most recent)
+        viewed = viewed.filter(p => p.id !== productData.id);
+
+        // Add new product to the beginning
+        viewed.unshift(productData);
+
+        // Limit the array size
+        if (viewed.length > MAX_RECENT_VIEWS) {
+            viewed = viewed.slice(0, MAX_RECENT_VIEWS);
+        }
+
+        localStorage.setItem(RECENT_VIEW_KEY, JSON.stringify(viewed));
+        renderRecentlyViewedProducts(); // Re-render the section
+    }
+
+    function renderRecentlyViewedProducts() {
+        const recentlyViewedGrid = document.getElementById('recently-viewed-grid');
+        const noRecentViewsMsg = document.getElementById('no-recent-views'); // Get the empty message element
+        const viewedProducts = getRecentlyViewedProducts();
+
+        if (viewedProducts.length === 0) {
+            recentlyViewedGrid.innerHTML = '<p class="empty-message" id="no-recent-views">No recently viewed products yet.</p>'; // Ensure ID is present if re-added
+            return;
+        }
+
+        // If products exist, ensure the empty message is removed
+        if (noRecentViewsMsg) {
+            noRecentViewsMsg.remove();
+        }
+
+        // Generate product cards for recently viewed items
+        recentlyViewedGrid.innerHTML = viewedProducts.map(p => `
+            <div class="product-card">
+                <img src="${p.img}" alt="${p.title}">
+                <div class="product-title">${p.title}</div>
+                <div class="product-rating">${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}</div>
+                <div>
+                    <span class="product-price">$${p.price.toFixed(2)}</span>
+                    ${p.old ? `<span class="product-old-price">$${p.old.toFixed(2)}</span>` : ''}
+                </div>
+                <div class="product-actions">
+                    <button onclick="openQuickView(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                        <i class="fas fa-eye"></i> Quick View
+                    </button>
+                    <button><i class="fas fa-heart"></i></button>
+                    <button onclick="toggleComparison(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                        <i class="fas fa-balance-scale"></i>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Call render on page load to display any previously viewed products
+    renderRecentlyViewedProducts();
 });
 
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const scrollToTopBtn = document.createElement('button');
-        scrollToTopBtn.className = 'scroll-to-top';
-        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        document.body.appendChild(scrollToTopBtn);
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollToTopBtn = document.createElement('button');
+    scrollToTopBtn.className = 'scroll-to-top';
+    scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(scrollToTopBtn);
 
-        const toggleScrollButton = () => {
-            if (window.scrollY > 300) { // Show button after scrolling 300px
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        };
+    const toggleScrollButton = () => {
+        if (window.scrollY > 300) { // Show button after scrolling 300px
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    };
 
-        window.addEventListener('scroll', toggleScrollButton);
+    window.addEventListener('scroll', toggleScrollButton);
 
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Smooth scroll to top
-            });
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Smooth scroll to top
         });
     });
+});
