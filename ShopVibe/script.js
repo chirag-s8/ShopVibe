@@ -219,9 +219,83 @@ document.body.onclick = function (e) {
     }
 };
 
+
+// Star rating logic
+const starRating = document.getElementById('starRating');
+let selectedRating = 0;
+
+starRating.addEventListener('mouseover', function(e) {
+  if (e.target.tagName === 'SPAN') {
+    const val = +e.target.getAttribute('data-value');
+    highlightStars(val);
+  }
+});
+
+starRating.addEventListener('mouseout', function() {
+  highlightStars(selectedRating);
+});
+
+starRating.addEventListener('click', function(e) {
+  if (e.target.tagName === 'SPAN') {
+    selectedRating = +e.target.getAttribute('data-value');
+    highlightStars(selectedRating);
+  }
+});
+
+function highlightStars(val) {
+  Array.from(starRating.children).forEach(star => {
+    const starVal = +star.getAttribute('data-value');
+    star.classList.toggle('selected', starVal <= val);
+    star.classList.toggle('hovered', starVal <= val && val !== selectedRating);
+  });
+}
+
+// Handle review form submission
+const reviewForm = document.getElementById('reviewForm');
+const reviewsList = document.getElementById('reviewsList');
+
+reviewForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const reviewer = document.getElementById('reviewer').value.trim();
+  const reviewText = document.getElementById('reviewText').value.trim();
+
+  if (!reviewer || !reviewText || selectedRating === 0) {
+    alert('Please fill in your name, review, and select a rating.');
+    return;
+  }
+
+  addReview(reviewer, selectedRating, reviewText);
+
+  // Reset form
+  reviewForm.reset();
+  selectedRating = 0;
+  highlightStars(0);
+});
+
+function addReview(name, rating, text) {
+  const reviewDiv = document.createElement('div');
+  reviewDiv.className = 'review';
+
+  const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+  reviewDiv.innerHTML = `
+    <div>
+      <span class="reviewer">${name}</span>
+      <span class="stars">${stars}</span>
+    </div>
+    <div class="text">${text}</div>
+  `;
+
+  reviewsList.prepend(reviewDiv);
+}
+
+// Demo: Add some categories and products dynamically
+
 // ===========================
 // DYNAMIC CATEGORIES & PRODUCTS
 // ===========================
+
 window.addEventListener('DOMContentLoaded', () => {
     const categories = [
         { icon: 'fa-laptop', name: 'Electronics', desc: 'Latest gadgets & devices' },

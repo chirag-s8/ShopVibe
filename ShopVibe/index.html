@@ -259,6 +259,32 @@
         </div>
     </section>
 
+    <div class="review-section">
+  <h2>Customer Reviews</h2>
+  <form id="reviewForm" class="review-form">
+    <label for="reviewer">Your Name:</label>
+    <input type="text" id="reviewer" required>
+
+    <label>Your Rating:</label>
+    <div class="star-rating" id="starRating">
+      <span data-value="1">&#9733;</span>
+      <span data-value="2">&#9733;</span>
+      <span data-value="3">&#9733;</span>
+      <span data-value="4">&#9733;</span>
+      <span data-value="5">&#9733;</span>
+    </div>
+
+    <label for="reviewText">Your Review:</label>
+    <textarea id="reviewText" rows="3" required></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <div class="reviews-list" id="reviewsList">
+    <!-- Reviews will appear here -->
+  </div>
+</div>
+
     <!-- Newsletter Section -->
     <section class="newsletter">
         <div class="container">
