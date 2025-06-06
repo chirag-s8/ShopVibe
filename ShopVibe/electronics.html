@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics - ShopVibe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope"></i> support@shopvibe.com</span>
+                    </div>
+                    <div class="top-bar-links">
+                        <a href="#" class="track-order">Track Order</a>
+                        <a href="#" class="help">Help</a>
+                        <div class="language-selector">
+                            <select>
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <h1><i class="fas fa-bolt"></i> ShopVibe</h1>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search for products, brands, and more..." id="search-input" autocomplete="off">
+                        <button class="search-btn" id="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                    <div class="nav-actions">
+                        <div class="user-account">
+                            <i class="fas fa-user"></i>
+                            <span>Account</span>
+                            <div class="account-dropdown">
+                                <a href="#" id="login-btn">Login</a>
+                                <a href="#" id="signup-btn">Sign Up</a>
+                                <a href="#">My Orders</a>
+                                <a href="#">Wishlist</a>
+                                <a href="#">Profile</a>
+                            </div>
+                        </div>
+                        <div class="wishlist">
+                            <i class="fas fa-heart"></i>
+                            <span class="wishlist-count">0</span>
+                        </div>
+                        <div class="cart" id="cart-toggle">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                            <span class="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-nav">
+                    <ul class="category-list">
+                        <li><a href="index.html" data-category="all">All Categories</a></li>
+                        <li><a href="electronics.html" data-category="electronics" class="active">Electronics</a></li>
+                        <li><a href="#" data-category="fashion">Fashion</a></li>
+                        <li><a href="#" data-category="home">Home & Garden</a></li>
+                        <li><a href="#" data-category="sports">Sports</a></li>
+                        <li><a href="#" data-category="beauty">Beauty</a></li>
+                        <li><a href="#" data-category="books">Books</a></li>
+                        <li><a href="#" data-category="automotive">Automotive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section for Electronics -->
+    <section class="hero" id="electronics-hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Electronics</h1>
+                            <h2 class="hero-subtitle">Latest Gadgets &amp; Devices</h2>
+                            <p class="hero-description">Discover the best in tech: headphones, laptops, tablets, smartwatches, and more. Shop the latest electronics at unbeatable prices!</p>
+                            <div class="hero-buttons">
+                                <a href="#products" class="btn btn-primary hero-btn">Shop Electronics</a>
+                                <a href="index.html" class="btn btn-secondary hero-btn">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-bg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Electronics Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Electronics Products</h2>
+                <p class="section-subtitle">Shop the latest and greatest in electronics</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://media.croma.com/image/upload/v1721992677/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/308673_jxaozj.png" alt="Wireless Headphones">
+                    <div class="product-title">Wireless Headphones</div>
+                    <div class="product-price">$59.99</div>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71zwwEe2nLL._AC_UY1100_.jpg" alt="Smart TV">
+                    <div class="product-title">Smart TV</div>
+                    <div class="product-price">$299.99</div>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.sony.com/is/image/gwtprod/2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e?fmt=png-alpha&wid=720" alt="Bluetooth Speaker">
+                    <div class="product-title">Bluetooth Speaker</div>
+                    <div class="product-price">$39.99</div>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71TPda7cwUL._AC_SL1500_.jpg" alt="Laptop">
+                    <div class="product-title">Laptop</div>
+                    <div class="product-price">$899.99</div>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_SL1500_.jpg" alt="Tablet">
+                    <div class="product-title">Tablet</div>
+                    <div class="product-price">$199.99</div>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQKW3_VW_34FR+watch-45-alum-silver-cell-8s_VW_34FR_WF_CO_GEO_IN?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1660775070476" alt="Smartwatch">
+                    <div class="product-title">Smartwatch</div>
+                    <div class="product-price">$149.99</div>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3><i class="fas fa-bolt"></i> ShopVibe</h3>
+                        <p>Your ultimate shopping destination for quality products at unbeatable prices.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Home & Garden</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                        <li><a href="#">Product Care</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 ShopVibe. All rights reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
